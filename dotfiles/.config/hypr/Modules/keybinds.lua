@@ -2,7 +2,7 @@
 local terminal = "kitty"
 local mainMod = "SUPER"
 local fileManager = "dolphin"
-local menu = "wofi --show drun"
+local menu = "rofi -show drun"
 
 
 ---------------------
@@ -50,6 +50,9 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 --Make focused window fullscreen
 hl.bind(mainMod .. " + f",hl.dsp.window.fullscreen(), { mouse = true})
+
+--screenshots
+hl.bind("Print", hl.dsp.exec_cmd('grim -g "$(slurp)" - | satty -f - | wl-copy'))
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"), { locked = true, repeating = true })
