@@ -1,0 +1,13 @@
+
+{
+  "explanation": "this file is to provide VSCode with lua autocompletion, pulled directly from hyprland wiki page",
+
+
+
+  "Lua.workspace.library": [
+    "/usr/share/hypr/stubs"
+  ],
+  "Lua.diagnostics.globals": [
+    "hl"
+  ]
+}
