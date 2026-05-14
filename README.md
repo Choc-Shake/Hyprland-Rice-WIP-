@@ -1,4 +1,4 @@
-# Work in progress hyprland ricing projecct
+# Work in progress hyprland ricing project
 
 First attempt at using, configuring and ricing hyprland. This repository is mainly for saving progress/backups and documenting the progress of this project.
 
