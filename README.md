@@ -34,13 +34,15 @@ Ensure you have the following packages installed on your Arch Linux system befor
 ```bash
 git clone [https://github.com/Choc-Shake/Hyprland-Rice-WIP-.git](https://github.com/Choc-Shake/Hyprland-Rice-WIP-.git)
 cd Hyprland-Rice-WIP-
+
+```
 2. Backup existing configurations
 Ensure you back up any existing configuration files in your ~/.config directory to avoid conflicts.
 
 3. Apply the dotfiles
 This repository uses a dotfiles directory and GNU Stow to manage symlinks. You can apply the configurations using the included script:
 
-Bash
+
 chmod +x stow.sh
 ./stow.sh
 Notable Features
