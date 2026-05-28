@@ -59,7 +59,8 @@ Wallpaper Management
 Wallpapers are handled dynamically using swww combined with waypaper as a frontend GUI, providing an easy and reliable way to switch backgrounds on Wayland.
 
 Repository Structure
-Plaintext
+
+```Plaintext
 Hyprland-Rice-WIP-/
 ├── dotfiles/
 │   └── .config/
