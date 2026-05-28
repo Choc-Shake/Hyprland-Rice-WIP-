@@ -41,24 +41,26 @@ Ensure you back up any existing configuration files in your ~/.config directory 
 
 3. Apply the dotfiles
 This repository uses a dotfiles directory and GNU Stow to manage symlinks. You can apply the configurations using the included script:
-
-
+```bash
 chmod +x stow.sh
 ./stow.sh
-Notable Features
-Modular Hyprland Configuration
+```
+
+## Notable Features
+
+**Modular Hyprland Configuration**
 Unlike standard monolithic configuration files, this setup breaks down the Hyprland configuration into distinct Lua modules (e.g., autostart.lua, keybinds.lua, monitors.lua). This makes the environment highly organized, easy to read, and simple to maintain.
 
-Waybar Integration
+**Waybar Integration**
 The Waybar configuration has undergone a major overhaul to remove redundant code. It includes built-in media support and is paired with a custom shell script (launch.sh) bound to a keybind for instant reloading, making testing and tweaking seamless.
 
-Advanced Clipboard
+**Advanced Clipboard**
 Clipboard history is managed via cliphist and wl-clipboard. Rather than using a standalone GUI, the clipboard history is piped directly into a custom Rofi menu for quick, keyboard-driven pasting.
 
-Wallpaper Management
+**Wallpaper Management**
 Wallpapers are handled dynamically using swww combined with waypaper as a frontend GUI, providing an easy and reliable way to switch backgrounds on Wayland.
 
-Repository Structure
+**Repository Structure**
 
 ```Plaintext
 Hyprland-Rice-WIP-/
