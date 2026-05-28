@@ -10,4 +10,9 @@
 hl.on("hyprland.start", function ()
     -- Start the hyprpaper daemon
     hl.exec_cmd("waypaper --restore")
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1")
+    hl.exec_cmd("wl-paste --type text --watch cliphist store")
+    hl.exec_cmd("wl-paste --type image --watch cliphist store")
+
 end)
