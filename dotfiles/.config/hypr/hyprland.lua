@@ -10,3 +10,5 @@ require("Modules.misc")
 require("Modules.monitors")
 require("Modules.permissions")
 require("Modules.windows_rules")
+
+require("hyprland-gui")
