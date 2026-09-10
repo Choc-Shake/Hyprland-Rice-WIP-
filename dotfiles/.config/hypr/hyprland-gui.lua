@@ -5,7 +5,42 @@ hl.config({
     animations = {
         enabled = false,
     },
+    general = {
+        border_size = 1,
+        col = {
+            active_border = {
+                colors = {"rgba(d6b25dff)"},
+                angle = 45,
+            },
+        },
+        gaps_in = 2,
+        gaps_out = 0,
+    },
+    gestures = {
+        workspace_swipe_invert = true,
+    },
+    input = {
+        natural_scroll = true,
+        touchpad = {
+            natural_scroll = true,
+        },
+    },
+})
+
+-- Monitors
+hl.monitor({
+    output = "eDP-1",
+    disabled = false,
+    mode = "1920x1200@60.00Hz",
+    position = "0x0",
+    scale = 1,
+    cm = "srgb",
 })
 
 -- Keybinds
+hl.unbind("SUPER + S")
 hl.bind("SUPER + S", hl.dsp.exec_cmd("hyprmod"))
+hl.unbind("SUPER + L")
+hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"))
+hl.unbind("SUPER + R")
+hl.bind("SUPER + R", hl.dsp.exec_cmd("rofi -show drun"))

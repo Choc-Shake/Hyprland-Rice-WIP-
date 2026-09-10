@@ -12,14 +12,14 @@ configuration {
     display-drun:               "🔍";
     display-run:                "🚀";
     drun-display-format:        "{name}";
-    font:                       "JetBrainsMono Nerd Font 11";
+    font:                       "JetBrainsMono Nerd Font 13";
 }
 
 window {
     transparency: "real";
     location: center;
     anchor: center;
-    width: 600px;
+    width: 450px;
     border: 1.7px solid;
     border-color: @accent-gold;
     background-color: @background;

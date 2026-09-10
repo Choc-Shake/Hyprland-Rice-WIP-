@@ -167,9 +167,9 @@ button:hover {
     color: @gold-bright;;
 }
 
-/* #network {
+ #network {
     color: @gold-bright;
-} */
+} 
 
 #network.disconnected {
     color: #f53c3c;
@@ -281,3 +281,30 @@ button:hover {
 #privacy-item.audio-out {
     background-color: #0069d4;
 } */
+
+
+/* Default battery color */
+#battery {
+    color: @gold-bright;
+}
+
+/* Green when plugged in */
+#battery.charging, #battery.plugged {
+    color: #a6e3a1; 
+}
+/* Red and blinking at 15% */
+#battery.critical:not(.charging) {
+    color: #f38ba8; 
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
