@@ -3,6 +3,8 @@
 -----------------------
 
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+
+--new
 hl.config({
     general = {
         gaps_in  = 5,
