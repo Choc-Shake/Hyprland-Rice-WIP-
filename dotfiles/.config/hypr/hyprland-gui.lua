@@ -3,7 +3,10 @@
 -- Settings
 hl.config({
     animations = {
-        enabled = false,
+        enabled = true,
+    },
+    cursor = {
+        no_hardware_cursors = 1,
     },
     general = {
         border_size = 1,
@@ -20,11 +23,58 @@ hl.config({
         workspace_swipe_invert = true,
     },
     input = {
+        accel_profile = "flat",
         natural_scroll = true,
+        sensitivity = 0.25,
         touchpad = {
             natural_scroll = true,
         },
     },
+})
+
+-- Bezier curves
+hl.curve("easeOutQuint", { type = "bezier", points = { {0.23, 1.0}, {0.32, 1.0} } })
+hl.curve("quick", { type = "bezier", points = { {0.15, 0.0}, {0.1, 1.0} } })
+
+-- Animations
+hl.animation({
+    leaf = "global",
+    enabled = true,
+    speed = 0.5,
+    bezier = "default",
+})
+hl.animation({
+    leaf = "windowsIn",
+    enabled = true,
+    speed = 1.0,
+    bezier = "quick",
+    style = "gnomed",
+})
+hl.animation({
+    leaf = "windowsOut",
+    enabled = true,
+    speed = 0.5,
+    bezier = "linear",
+})
+hl.animation({
+    leaf = "windowsMove",
+    enabled = true,
+    speed = 2.0,
+    bezier = "quick",
+})
+hl.animation({
+    leaf = "layersIn",
+    enabled = true,
+    speed = 1.0,
+    bezier = "easeOutQuint",
+    style = "fade",
+})
+hl.animation({
+    leaf = "layersOut",
+    enabled = true,
+    speed = 0.5,
+    bezier = "linear",
+    style = "fade",
 })
 
 -- Monitors
@@ -44,3 +94,7 @@ hl.unbind("SUPER + L")
 hl.bind("SUPER + L", hl.dsp.exec_cmd("hyprlock"))
 hl.unbind("SUPER + R")
 hl.bind("SUPER + R", hl.dsp.exec_cmd("rofi -show drun"))
+hl.unbind("SUPER + E")
+hl.bind("SUPER + E", hl.dsp.exec_cmd("nautilus"))
+hl.unbind("SUPER + SHIFT + F23")
+hl.bind("SUPER + SHIFT + F23", hl.dsp.exec_cmd("claude-desktop"))
