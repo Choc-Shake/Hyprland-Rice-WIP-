@@ -1,0 +1,12 @@
+# Satty annotation editor (Print key in Hyprland)
+#   Escape / Enter -> copy to clipboard and close
+#   Ctrl+S         -> also save to ~/Pictures/Screenshots (stays open)
+#   closing the window with SUPER+C does NOT copy; use Escape
+[general]
+copy-command = "wl-copy"
+save-after-copy = false
+early-exit = false
+actions-on-enter = ["save-to-clipboard", "exit"]
+actions-on-escape = ["save-to-clipboard", "exit"]
+output-filename = "~/Pictures/Screenshots/satty-%Y-%m-%d_%H-%M-%S.png"
+initial-tool = "brush"

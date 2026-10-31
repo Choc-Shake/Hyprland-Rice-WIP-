@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# battery-mode: switch the ThinkPad charge limit via upower (no root needed).
+#   conserve  -> charge only below 75%, stop at 80% (longevity)
+#   full      -> charge to 100% (before travel)
+#   toggle    -> switch between the two
+#   status    -> print current mode and thresholds
+set -euo pipefail
+DEV=/org/freedesktop/UPower/devices/battery_BAT0
+BAT=/sys/class/power_supply/BAT0
+
+enabled() { busctl get-property org.freedesktop.UPower "$DEV" org.freedesktop.UPower.Device ChargeThresholdEnabled | awk '{print $2}'; }
+set_limit() { busctl call org.freedesktop.UPower "$DEV" org.freedesktop.UPower.Device EnableChargeThreshold b "$1"; }
+report() {
+    sleep 1
+    local mode; [[ $(enabled) == true ]] && mode="conserve" || mode="full"
+    local msg="Mode: $mode (charge ${BAT##*/} $(cat $BAT/charge_control_start_threshold)→$(cat $BAT/charge_control_end_threshold)%) · $(cat $BAT/capacity)% $(cat $BAT/status)"
+    echo "$msg"
+    [[ ${1:-} == notify ]] && command -v notify-send >/dev/null && notify-send -a battery-mode -i battery "Battery charge limit" "$msg" || true
+}
+
+case "${1:-status}" in
+    conserve) set_limit true;  report notify ;;
+    full)     set_limit false; report notify ;;
+    toggle)   [[ $(enabled) == true ]] && set_limit false || set_limit true; report notify ;;
+    status)   report ;;
+    *) echo "usage: battery-mode {conserve|full|toggle|status}" >&2; exit 1 ;;
+esac

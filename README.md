@@ -28,7 +28,7 @@ A custom, work-in-progress [Hyprland](https://hyprland.org/) dotfiles configurat
 
 **Dependencies Required:**
 Ensure you have the following packages installed on your Arch Linux system before applying the configurations:
-`hyprland`, `waybar`, `kitty`, `rofi-wayland`, `swww`, `waypaper`, `cliphist`, `wl-clipboard`, `stow`
+`hyprland`, `hypridle`, `hyprlock`, `waybar`, `kitty`, `rofi-wayland`, `swww`, `waypaper`, `cliphist`, `wl-clipboard`, `grim`, `slurp`, `satty`, `hyprshot`, `jq`, `libnotify`, `upower`, `stow`
 
 **1. Clone the repository**
 ```bash
@@ -55,7 +55,16 @@ Unlike standard monolithic configuration files, this setup breaks down the Hyprl
 The Waybar configuration has undergone a major overhaul to remove redundant code. It includes built-in media support and is paired with a custom shell script (launch.sh) bound to a keybind for instant reloading, making testing and tweaking seamless.
 
 **Advanced Clipboard**
-Clipboard history is managed via cliphist and wl-clipboard. Rather than using a standalone GUI, the clipboard history is piped directly into a custom Rofi menu for quick, keyboard-driven pasting.
+Clipboard history is managed via cliphist and wl-clipboard. `SUPER+V` opens a custom Rofi picker (`cliphist-rofi`) that shows image entries as thumbnails with their size, instead of raw binary data.
+
+**Screenshots**
+`Print` (or the ThinkPad F9 snip key) selects a region and opens it in Satty: `Esc`/`Enter` copies to the clipboard and closes, `Ctrl+S` saves to `~/Pictures/Screenshots`. `Shift+Print` captures the whole screen and saves + copies it instantly.
+
+**Battery Care (ThinkPad)**
+`battery-mode {conserve|full|toggle|status}` switches upower's charge limit between 75–80% (longevity) and a full charge, also bound to the F12 ★ key. A `battery-notify` systemd user timer warns at 15% and 5%. Enable it after stowing with `systemctl --user enable --now battery-notify.timer`.
+
+**Power Menu**
+`SUPER+Escape` opens a Rofi menu to lock, suspend, log out, reboot or shut down.
 
 **Wallpaper Management**
 Wallpapers are handled dynamically using swww combined with waypaper as a frontend GUI, providing an easy and reliable way to switch backgrounds on Wayland.
@@ -83,9 +92,19 @@ Hyprland-Rice-WIP-/
 │       ├── rofi/
 │       │   ├── config_old.rasi
 │       │   └── config.rasi
+│       ├── satty/
+│       │   └── config.toml
+│       ├── systemd/user/
+│       │   ├── battery-notify.service
+│       │   └── battery-notify.timer
 │       └── waybar/
 │           ├── config.jsonc
 │           ├── launch.sh
 │           └── style.css
+│   └── .local/bin/
+│       ├── battery-mode
+│       ├── battery-notify
+│       ├── cliphist-rofi
+│       └── powermenu
 ├── README.md
 └── stow.sh

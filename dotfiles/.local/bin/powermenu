@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# powermenu: rofi power menu for Hyprland (bound to SUPER+Escape)
+choice=$(printf '%s\n' "  Lock" "  Suspend" "  Log out" "  Reboot" "  Shut down" \
+    | rofi -dmenu -i -p "Power" -no-custom) || exit 0
+case "$choice" in
+    *Lock)       loginctl lock-session ;;
+    *Suspend)    systemctl suspend ;;
+    *"Log out")  hyprctl dispatch 'hl.dsp.exit()' ;;
+    *Reboot)     systemctl reboot ;;
+    *"Shut down") systemctl poweroff ;;
+esac
